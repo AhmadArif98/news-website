@@ -78,6 +78,8 @@ Follow these steps to set up Docker on Linux and run the application:
 11. **Run the Docker container**:
   docker run -d -p 4000:80 --name docker-react-container news-website-docker
 
+  Open [http://localhost:4000](http://localhost:4000) in your browser to view the application.
+
 
 12. **Stop the Docker container**:
   docker stop <container_id> 
