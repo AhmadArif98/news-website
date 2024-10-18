@@ -1,70 +1,106 @@
-# news-website
+# News Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+
+This project is a news website built using React.js. It allows users to search, filter, and access news from various sources, such as NewsAPI, The Guardian News, and the New York Times APIs. The application is mobile-responsive and designed to provide a personalized news feed based on user preferences.
+
+## Prerequisites
+
+- **Node.js**: Ensure Node.js version `20.16.0` is installed on your system.
+- **Docker**: Make sure Docker is installed if you plan to run the app using Docker.
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory, you can run the following commands:
+
+### `npm install`
+
+Installs the necessary dependencies for the project.
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Runs the application in development mode.  
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The page automatically reloads if you make any changes. Additionally, you may see linting errors displayed in the console for quick debugging.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Docker Setup for Linux
 
-### `npm run build`
+Follow these steps to set up Docker on Linux and run the application:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Remove any existing Docker versions**:
+  sudo apt-get remove docker docker-engine docker.io containerd runc
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Update the package index**:
+  sudo apt-get update
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Install required packages**:
+  sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4. **Add Docker’s official GPG key**:
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+5. **Set up the stable Docker repository**:
+  echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \ $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+6. **Update the package index again**:
+  sudo apt-get update
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+7. **Install Docker Engine**:
+  sudo apt-get install docker-ce docker-ce-cli containerd.io
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+8. **Verify Docker installation**:
+  docker --version
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+9. **Add your user to the Docker group**:
+  sudo groupadd docker
+  sudo usermod -aG docker $USER
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+10. **Build the Docker image for the application**:
+  docker build -t news-website-docker .
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+11. **Run the Docker container**:
+  docker run -d -p 4000:80 --name docker-react-container news-website-docker
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+12. **Stop the Docker container**:
+  docker stop <container_id> 
+**Example**:
+like this: docker stop b136d3f389f0a8b7784345334b4c7a0eeb5a643ebb2dde8772ec98e26a15a1a9
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
